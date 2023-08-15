@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      background-color: black;
+      color: white;
+      font-family: Arial, sans-serif;
+    }
+    
+    #content, #message, #message-no {
+      text-align: center;
+    }
+    
+    h2, p {
+      font-size: 24px;
+    }
+    
+    .button {
+      display: inline-block;
+      padding: 10px 20px;
+      margin: 10px;
+      border: 2px solid white;
+      border-radius: 10px;
+      background-color: transparent;
+      color: blue;
+      cursor: pointer;
+    }
+    
+    #no-button {
+      position: absolute;
+    }
+  </style>
+  <title>Me Dá uma Mordida?</title>
+</head>
+<body>
+  <div id="content">
+    <h2>Você poderia me dar outra mordida?</h2>
+    <button class="button" id="yes-button">Sim</button>
+    <button class="button" id="no-button">Não</button>
+  </div>
+  <div id="message" style="display: none;">
+    <p>Muito obrigado, amo quando você faz isso, te amo ♥</p>
+  </div>
+  <div id="message-no" style="display: none;">
+    <p>Por favor minha princesa, adoro quando você faz isso :( :(</p>
+  </div>
+  <script>
+    const noButton = document.getElementById("no-button");
+    const yesButton = document.getElementById("yes-button");
+    const messageDiv = document.getElementById("message");
+    const messageDivNo = document.getElementById("message-no");
+
+    noButton.addEventListener("touchmove", (e) => {
+      e.preventDefault();
+      const maxX = window.innerWidth - noButton.clientWidth;
+      const maxY = window.innerHeight - noButton.clientHeight;
+      const randomX = Math.floor(Math.random() * maxX);
+      const randomY = Math.floor(Math.random() * maxY);
+      noButton.style.left = randomX + "px";
+      noButton.style.top = randomY + "px";
+    });
+
+    yesButton.addEventListener("click", () => {
+      document.body.style.backgroundColor = "black";
+      document.body.style.color = "white";
+      document.getElementById("content").style.display = "none";
+      messageDiv.style.display = "block";
+    });
+
+    noButton.addEventListener("click", () => {
+      document.body.style.backgroundColor = "black";
+      document.body.style.color = "white";
+      document.getElementById("content").style.display = "none";
+      messageDivNo.style.display = "block";
+    });
+  </script>
+</body>
+</html>
